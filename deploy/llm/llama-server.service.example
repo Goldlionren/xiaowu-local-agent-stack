@@ -1,0 +1,22 @@
+[Unit]
+Description=Local llama.cpp SYCL Server
+After=network-online.target
+Wants=network-online.target
+RequiresMountsFor=/srv/models
+
+[Service]
+Type=simple
+User=LOCAL_AGENT_USER
+Group=LOCAL_AGENT_GROUP
+EnvironmentFile=/etc/xiaowu/llm.env
+ExecStart=/usr/local/bin/xiaowu-llm-start
+Restart=on-failure
+RestartSec=10
+TimeoutStartSec=600
+TimeoutStopSec=60
+KillSignal=SIGINT
+LimitNOFILE=65535
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

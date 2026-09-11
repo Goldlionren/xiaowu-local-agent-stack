@@ -1,0 +1,47 @@
+model:
+  default: yinyue2
+  provider: custom:yinyue2-local
+  base_url: http://127.0.0.1:10000/v1
+  api_mode: chat_completions
+  context_length: 262144
+
+plugins:
+  enabled:
+    - xiaowu-memory-bridge
+    - xiaowu-model-router
+    - xiaowu-visual
+  entries:
+    xiaowu-model-router:
+      allow_tool_override: false
+    xiaowu-visual:
+      allow_tool_override: true
+    xiaowu-memory-bridge:
+      allow_tool_override: false
+
+agent:
+  disabled_toolsets:
+    - mcp-comfy_3060
+    - mcp-comfy_5090
+
+custom_providers:
+  - name: yinyue2-local
+    base_url: http://127.0.0.1:10000/v1
+    model: yinyue2
+    api_mode: chat_completions
+    models:
+      - yinyue2
+
+# Add private MCP host, account, and identity-file values outside Git.
+mcp_servers:
+  comfy_3060:
+    command: ssh
+    args:
+      - -T
+      - -i
+      - PRIVATE_SSH_IDENTITY_FILE
+      - -o
+      - BatchMode=yes
+      - REMOTE_USER_AT_HOST
+      - REMOTE_MCP_START_COMMAND
+    connect_timeout: 30
+    timeout: 180

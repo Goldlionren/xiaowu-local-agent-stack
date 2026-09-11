@@ -1,0 +1,22 @@
+mcp_servers:
+  comfy_worker:
+    command: ssh
+    args:
+      - -T
+      - -i
+      - PRIVATE_SSH_IDENTITY_FILE
+      - -o
+      - BatchMode=yes
+      - -o
+      - LogLevel=ERROR
+      - REMOTE_USER_AT_HOST
+      - REMOTE_MCP_START_COMMAND
+    connect_timeout: 30
+    timeout: 180
+    tools:
+      replay:
+        default: allow
+        non_replayable:
+          - run_workflow
+      exclude:
+        - upload_file

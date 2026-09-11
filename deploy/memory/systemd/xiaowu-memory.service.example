@@ -1,0 +1,29 @@
+[Unit]
+Description=Xiaowu Memory Service
+Wants=network-online.target
+After=network-online.target docker.service
+
+[Service]
+Type=simple
+User=LOCAL_AGENT_USER
+Group=LOCAL_AGENT_GROUP
+WorkingDirectory=/opt/xiaowu-memory-service
+EnvironmentFile=/etc/xiaowu/memory.env
+ExecStart=/opt/xiaowu-memory-service/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8890
+Restart=always
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target

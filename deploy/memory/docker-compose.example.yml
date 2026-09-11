@@ -1,0 +1,41 @@
+services:
+  db:
+    image: tensorchord/vchord-suite:pg18-latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: $POSTGRES_DB
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+    ports:
+      - "127.0.0.1:5436:5432"
+    volumes:
+      - hindsight-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  hindsight-api:
+    image: ghcr.io/vectorize-io/hindsight-api:0.8.6
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      HINDSIGHT_API_DATABASE_URL: $HINDSIGHT_DATABASE_URL
+      HINDSIGHT_API_LLM_PROVIDER: openai
+      HINDSIGHT_API_LLM_BASE_URL: http://127.0.0.1:10002/v1
+      HINDSIGHT_API_LLM_MODEL: yinyue2-hindsight
+      HINDSIGHT_API_LLM_MAX_CONCURRENT: "1"
+      HINDSIGHT_API_LLM_TIMEOUT: "300"
+      HINDSIGHT_API_EMBEDDINGS_PROVIDER: openai
+      HINDSIGHT_API_EMBEDDINGS_OPENAI_BASE_URL: http://127.0.0.1:10001/v1
+      HINDSIGHT_API_EMBEDDINGS_OPENAI_MODEL: yinyue2-embedding
+      HINDSIGHT_API_RERANKER_PROVIDER: local
+      HINDSIGHT_API_RERANKER_LOCAL_MODEL: BAAI/bge-reranker-v2-m3
+      HINDSIGHT_API_RERANKER_LOCAL_FORCE_CPU: "true"
+      HINDSIGHT_API_RERANKER_LOCAL_BUCKET_BATCHING: "true"
+      HINDSIGHT_API_RERANKER_LOCAL_BATCH_SIZE: "8"
+      HINDSIGHT_API_RERANKER_MAX_CANDIDATES: "32"
+
+volumes:
+  hindsight-pgdata:
