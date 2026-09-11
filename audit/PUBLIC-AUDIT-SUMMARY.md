@@ -6,10 +6,22 @@ No production service was stopped, restarted, upgraded, deleted, or rebuilt. No 
 
 The public tree contains newly written integration material only. Unlicensed custom source and third-party source were excluded.
 
-Release blockers found:
+## Public release status
 
-- GitHub CLI is not installed, so repository creation and push were not performed.
-- gitleaks and trufflehog are not installed; the release used local pattern and file-type scans.
-- pytest is unavailable; existing custom test suites were not executed.
+The repository was published to GitHub on 2026-09-11 as:
 
-The candidate passed the local public-content review recorded outside this public tree before commit.
+Goldlionren/xiaowu-local-agent-stack
+
+The initial public release commit was:
+
+3c2b51a6da3ebe7469f65546f0d2127b2fafc87b
+
+GitHub CLI authentication and repository creation completed successfully, and the local `main` branch was pushed to and configured to track `origin/main`.
+
+## Audit limitations
+
+- gitleaks and trufflehog were not installed; the release used local pattern, file-type, Git index, and manual content review instead.
+- pytest was unavailable in the production Hermes environment; existing custom production test suites were therefore not automatically executed.
+- These limitations do not supersede the runtime verification documented in `docs/VERIFICATION-MATRIX.md`.
+
+The candidate passed the local public-content and Secret/Privacy Review before publication.
