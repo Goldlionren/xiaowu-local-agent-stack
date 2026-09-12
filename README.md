@@ -34,11 +34,12 @@ No model weights, memory records, chat transcripts, state databases, generated i
 The repository contains:
 
 - evidence-backed, sanitized As-Built documentation;
+- sanitized XiaowuAvatar core, visual plugin, model router, and regression tests;
 - systemd, Docker Compose, Hermes, LLM, memory, and MCP examples;
 - read-only health and secret scanning helpers;
 - migration notes for active Xiaowu names and retained Yinyue compatibility names.
 
-Custom production source was not copied because no local license file was found for those directories. The integration is documented instead.
+Private identity content, live configuration, workflows, model assets, runtime state, and generated media remain excluded. The published Avatar source inherits this repository's MIT license.
 
 ## Quick validation
 

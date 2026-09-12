@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/xiaowu-avatar/workflow-registry-v1.schema.json",
+  "title": "xiaowu-avatar workflow registry v1",
+  "type": "object",
+  "required": ["schema_version", "targets", "workflows"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "targets": {"type": "object", "minProperties": 1},
+    "workflows": {"type": "object", "minProperties": 1}
+  },
+  "additionalProperties": false
+}

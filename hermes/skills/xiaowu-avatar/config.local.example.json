@@ -1,0 +1,38 @@
+{
+  "comfyui": {
+    "base_url": "http://127.0.0.1:8188"
+  },
+  "telegram": {
+    "default_channel": "telegram",
+    "hermes_cli": "hermes"
+  },
+  "runtime": {
+    "state_dir": "~/.hermes/state/identity-studio/xiaowu/xiaowu-avatar",
+    "launcher": "auto"
+  },
+  "identity_workflow_contract": {
+    "api_variant_transport": {
+      "comfy_5090": {
+        "ssh_key": "~/.ssh/comfy_5090",
+        "ssh_remote": "gpu-user@GPU-5090-HOST"
+      },
+      "comfy_4080s": {
+        "ssh_key": "~/.ssh/comfy_4080s",
+        "ssh_remote": "gpu-user@GPU-4080S-HOST"
+      },
+      "comfy_3060": {
+        "ssh_key": "~/.ssh/comfy_3060",
+        "ssh_remote": "gpu-user@GPU-3060-HOST"
+      }
+    }
+  },
+  "execution": {
+    "mode": "mcp",
+    "default_target": "comfy_5090",
+    "generation_timeout_seconds_by_target": {
+      "comfy_5090": 240,
+      "comfy_4080s": 240,
+      "comfy_3060": 600
+    }
+  }
+}

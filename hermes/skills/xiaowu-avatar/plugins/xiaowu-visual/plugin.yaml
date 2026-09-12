@@ -1,0 +1,13 @@
+name: xiaowu-visual
+version: "1.4.0"
+description: "Xiaowu deterministic avatar generation and safe management commands."
+provides_hooks:
+  - pre_gateway_dispatch
+  - pre_llm_call
+  - pre_tool_call
+  - post_tool_call
+  - transform_tool_result
+  - transform_llm_output
+  - post_llm_call
+provides_tools:
+  - xiaowu_avatar_generate

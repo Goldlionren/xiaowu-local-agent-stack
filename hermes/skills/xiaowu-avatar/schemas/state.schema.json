@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/xiaowu-avatar/state-v2.schema.json",
+  "title": "xiaowu-avatar compatible state with v0.3 visual extension",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "character",
+    "relationship",
+    "scene",
+    "appearance",
+    "physical",
+    "emotion",
+    "presentation",
+    "continuity",
+    "memory",
+    "visual",
+    "internal"
+  ],
+  "properties": {
+    "schema_version": {"const": 2},
+    "visual_system_version": {"const": 1},
+    "character": {"type": "object"},
+    "relationship": {
+      "type": "object",
+      "required": ["role", "stage", "trust", "intimacy", "attachment"],
+      "additionalProperties": false,
+      "properties": {
+        "role": {"type": "string"},
+        "stage": {"type": "string"},
+        "trust": {"type": "integer", "minimum": 0, "maximum": 100},
+        "intimacy": {"type": "integer", "minimum": 0, "maximum": 100},
+        "attachment": {"type": "integer", "minimum": 0, "maximum": 100},
+        "current_dynamic": {"type": "string"},
+        "shared_commitments": {"type": "array", "items": {"type": "string"}},
+        "important_boundaries": {"type": "array", "items": {"type": "string"}},
+        "preferred_names": {"type": "object"},
+        "last_major_change": {"type": ["string", "null"]},
+        "legacy_relationship_stage": {},
+        "legacy_affection": {}
+      }
+    },
+    "scene": {
+      "type": "object",
+      "required": ["scene_id", "location", "environment", "activity", "time_of_day"]
+    },
+    "appearance": {
+      "type": "object",
+      "required": ["outfit", "hair", "makeup", "accessories"]
+    },
+    "physical": {
+      "type": "object",
+      "required": ["cleanliness", "wetness", "sweat", "dirt", "fatigue", "injury"]
+    },
+    "emotion": {
+      "type": "object",
+      "required": ["baseline", "current", "intensity", "reason", "persist_across_scenes"]
+    },
+    "presentation": {
+      "type": "object",
+      "required": ["pose", "action", "expression", "gaze", "held_objects"]
+    },
+    "continuity": {
+      "type": "object",
+      "required": [
+        "revision", "last_image", "mode", "scene_id", "source_revision",
+        "last_workflow_id", "last_target", "last_transaction_id",
+        "remote_images", "delivery_status"
+      ]
+    },
+    "memory": {
+      "type": "object",
+      "required": [
+        "long_term_summary",
+        "shared_experiences",
+        "stable_user_preferences",
+        "unfinished_items",
+        "recent_events"
+      ]
+    },
+    "visual": {"type": "object"},
+    "internal": {"type": "object"}
+  },
+  "additionalProperties": true
+}

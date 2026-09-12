@@ -31,17 +31,17 @@ Status vocabulary is limited to PASS, FAIL, PARTIAL, NOT TESTED, and DISABLED BY
 | Memory Service | PASS | /health reports 0.5.1-phase8f-fast2 healthy |
 | Memory Gate | PASS | Memory Service health reports gate healthy on 10002 |
 | retrieve API | PASS | nonce query HTTP 200, current, resolved, 1.013 s |
-| xiaowu-avatar | PASS | revision 20 transaction completed and committed |
-| xiaowu-visual | PASS | enabled 1.3.0; transaction used published tool path |
-| xiaowu-model-router | PARTIAL | enabled with xiaowu route; isolated tests unavailable |
+| xiaowu-avatar | PASS | revision 34 transaction completed, committed, and delivered |
+| xiaowu-visual | PASS | enabled 1.4.0; management commands and generation tool verified |
+| xiaowu-model-router | PASS | deferred tool bridge and output guards verified; 48 isolated tests pass |
 | xiaowu_avatar_generate | PASS | latest transaction submit_count 1 and delivered |
-| Comfy MCP | PASS | comfy_3060 connected and discovered 39 tools |
+| Comfy MCP | PASS | 3060, 4080s, and 5090 connected; each discovered 39 tools |
 | 3060 target | PASS | registry active/verified and live connection succeeded |
-| 5090 avatar target | DISABLED BY DESIGN | registry enabled false and fail-closed |
-| Image generation | PASS | latest transaction generation and job completed |
-| Image retrieval | PASS | committed PNG validated as 1328 by 1776 and hashed |
-| Telegram delivery | PASS | latest transaction recorded attempted and successful text/media delivery |
+| 4080s avatar target | PASS | workflow, reference, 22 node classes, and 6 model dependencies verified |
+| 5090 avatar target | PASS | workflow, reference, 22 node classes, and 6 model dependencies verified |
+| Image generation | PASS | 5090 job completed once under its original prompt binding |
+| Image retrieval | PASS | existing completed 5090 output was resumed, fetched, and committed |
+| Telegram delivery | PASS | recovered transaction recorded successful text and media delivery |
 | qwen-worker mirror | PARTIAL | profile stopped and two active-source files differ |
-| comfy_4080s | PASS | live MCP test connected and found 39 tools |
 | comfytv_4080s | FAIL | live HTTP MCP test timed out after 30 s |
-| Production pytest suites | NOT TESTED | pytest not installed in gateway venv or PATH |
+| Published Avatar regression tests | PASS | 13 skill tests and 48 router tests pass in isolation |

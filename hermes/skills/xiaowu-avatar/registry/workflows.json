@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "targets": {
+    "comfy_5090": {
+      "mcp_server": "comfy_5090",
+      "enabled": true,
+      "preferred_rank": 10,
+      "remote_root": "F:\\AI\\XiaowuAvatar",
+      "remote_variant_root": "F:\\AI\\XiaowuAvatar\\temp",
+      "remote_output_root": "F:\\AI\\XiaowuAvatar\\output"
+    },
+    "comfy_4080s": {
+      "mcp_server": "comfy_4080s",
+      "enabled": true,
+      "preferred_rank": 20,
+      "remote_root": "F:\\AI\\XiaowuAvatar",
+      "remote_variant_root": "F:\\AI\\XiaowuAvatar\\temp",
+      "remote_output_root": "F:\\AI\\XiaowuAvatar\\output"
+    },
+    "comfy_3060": {
+      "mcp_server": "comfy_3060",
+      "enabled": true,
+      "preferred_rank": 30,
+      "remote_root": "D:\\AI\\XiaowuAvatar",
+      "remote_variant_root": "D:\\AI\\XiaowuAvatar\\temp",
+      "remote_output_root": "D:\\AI\\XiaowuAvatar\\output"
+    }
+  },
+  "workflows": {
+    "yinyue_cosplay01": {
+      "id": "yinyue_cosplay01",
+      "purpose": "text_to_image",
+      "description": "生成小舞完整形象、换装、动作或新场景；Everyone Avatar 使用身份参考图保持一致性。",
+      "allowed_targets": [
+        "comfy_5090",
+        "comfy_4080s",
+        "comfy_3060"
+      ],
+      "preferred_target": "comfy_3060",
+      "remote_paths": {
+        "comfy_5090": "F:\\AI\\XiaowuAvatar\\workflows\\Krea2_YINYUE_cosplay01.json",
+        "comfy_4080s": "F:\\AI\\XiaowuAvatar\\workflows\\Krea2_YINYUE_cosplay01.json",
+        "comfy_3060": "D:\\AI\\XiaowuAvatar\\workflows\\Krea2_YINYUE_cosplay01.json"
+      },
+      "capabilities": [
+        "show_current",
+        "full_regeneration",
+        "text_to_image",
+        "resolution"
+      ],
+      "input_roles": [
+        "prompt"
+      ],
+      "output_role": "image",
+      "default_parameters": {
+        "aspect_ratio": "9:16",
+        "megapixels": 1.5
+      },
+      "parameter_bindings": {
+        "prompt": {
+          "kind": "workflow_slot",
+          "address": "45.value",
+          "required": true
+        }
+      },
+      "target_status": {
+        "comfy_5090": {
+          "workflow_exists": true,
+          "interface_verified": true,
+          "runtime_preflight_allowed": true,
+          "checked_at": "2026-09-12T09:34:52Z",
+          "reason": "Everyone Avatar API workflow SHA-256, prompt=45.value, reference=17.image, all 22 node classes and all 6 model dependencies verified on 5090"
+        },
+        "comfy_4080s": {
+          "workflow_exists": true,
+          "interface_verified": true,
+          "runtime_preflight_allowed": true,
+          "checked_at": "2026-09-12T09:34:52Z",
+          "reason": "Everyone Avatar API workflow SHA-256, prompt=45.value, reference=17.image, all 22 node classes and all 6 model dependencies verified on 4080s"
+        },
+        "comfy_3060": {
+          "workflow_exists": true,
+          "interface_verified": true,
+          "checked_at": "2026-09-09T08:17:13Z",
+          "reason": "Everyone Avatar contract verified on deployed remote workflow: prompt=45.value, reference=17.image, reference_filename=xiaowu-avatar-ref-image01.png"
+        }
+      },
+      "legacy_direct_http": {
+        "local_path": "workflow/Krea2_YINYUE_cosplay01.json",
+        "prompt": {
+          "node_id": "63",
+          "input_name": "value"
+        },
+        "output": {
+          "node_id": "79"
+        }
+      },
+      "identity_workflow_contract": {
+        "mode": "everyone-avatar",
+        "workflow_format": "api",
+        "variant_strategy": "local_json_scp_sha256",
+        "runtime_executor": "mcp_executor_api_v1",
+        "prompt": "45.value",
+        "reference": "17.image",
+        "reference_filename": "xiaowu-avatar-ref-image01.png",
+        "runtime_mutable": [
+          "45.value"
+        ],
+        "identity_apply_mutable": [
+          "17.image"
+        ],
+        "preserve_workflow_resolution": true,
+        "preserve_workflow_sampler_seeds": true
+      },
+      "workflow_format": "api"
+    },
+    "yinyue_edit01": {
+      "id": "yinyue_edit01",
+      "purpose": "image_edit",
+      "description": "基于上一张真实银月图片进行局部服装、发型、动作、表情或物体编辑。",
+      "allowed_targets": [
+        "comfy_5090",
+        "comfy_3060"
+      ],
+      "preferred_target": "comfy_3060",
+      "remote_paths": {
+        "comfy_5090": "F:\\AI\\XiaowuAvatar\\workflows\\yinyue_edit01.json",
+        "comfy_3060": "D:\\AI\\XiaowuAvatar\\workflows\\yinyue_edit01.json"
+      },
+      "capabilities": [
+        "local_edit",
+        "image_edit",
+        "identity_preservation",
+        "resolution"
+      ],
+      "input_roles": [
+        "prompt",
+        "input_image",
+        "denoise",
+        "aspect_ratio",
+        "megapixels",
+        "width",
+        "height"
+      ],
+      "output_role": "image",
+      "default_parameters": {
+        "denoise": 0.65
+      },
+      "parameter_bindings": {
+        "prompt": {
+          "kind": "workflow_slot",
+          "address": "prompt.text",
+          "required": true
+        },
+        "input_image": {
+          "kind": "workflow_slot",
+          "address": "source.image",
+          "required": true
+        },
+        "denoise": {
+          "kind": "workflow_slot",
+          "address": "sampler.denoise"
+        },
+        "aspect_ratio": {
+          "kind": "workflow_slot",
+          "address": "resolution.aspect_ratio"
+        },
+        "megapixels": {
+          "kind": "workflow_slot",
+          "address": "resolution.megapixels"
+        },
+        "width": {
+          "kind": "workflow_slot",
+          "address": "resolution.width"
+        },
+        "height": {
+          "kind": "workflow_slot",
+          "address": "resolution.height"
+        }
+      },
+      "target_status": {
+        "comfy_5090": {
+          "workflow_exists": false,
+          "interface_verified": false,
+          "checked_at": "2026-08-18T13:55:51Z",
+          "reason": "host unreachable during audit; workflow and slots not verified"
+        },
+        "comfy_3060": {
+          "workflow_exists": false,
+          "interface_verified": false,
+          "checked_at": "2026-08-18T13:55:51Z",
+          "reason": "yinyue_edit01.json is absent on the GPU host"
+        }
+      }
+    }
+  }
+}

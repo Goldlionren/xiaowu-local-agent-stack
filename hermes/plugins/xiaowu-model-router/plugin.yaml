@@ -1,0 +1,20 @@
+name: xiaowu-model-router
+version: "0.3.0"
+description: "Session-sticky Qwen and Yinyue persona router with on-demand visual Skill use."
+author: "local"
+hooks:
+  - pre_gateway_dispatch
+  - pre_llm_call
+  - pre_api_request
+  - post_llm_call
+  - pre_tool_call
+  - post_tool_call
+  - transform_llm_output
+provides_hooks:
+  - pre_gateway_dispatch
+  - pre_llm_call
+  - pre_api_request
+  - post_llm_call
+  - pre_tool_call
+  - post_tool_call
+  - transform_llm_output

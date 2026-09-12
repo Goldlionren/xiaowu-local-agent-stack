@@ -1,0 +1,8 @@
+routes:
+  xiaowu-avatar:
+    model: yinyue2
+    provider: yinyue2-local
+    base_url: http://127.0.0.1:10000/v1
+    api_mode: chat_completions
+    reasoning_effort: none
+    endpoint_timeout_seconds: 2.0

@@ -1,0 +1,117 @@
+{
+  "schema_version": 2,
+  "visual_system_version": 1,
+  "character": {
+    "name": "小舞",
+    "identity": "固定成年女性数字人",
+    "identity_locked": true
+  },
+  "relationship": {
+    "role": "",
+    "stage": "0",
+    "trust": 10,
+    "intimacy": 10,
+    "attachment": 10,
+    "current_dynamic": "",
+    "shared_commitments": [],
+    "important_boundaries": [],
+    "preferred_names": {},
+    "last_major_change": null,
+    "legacy_relationship_stage": 0,
+    "legacy_affection": 10
+  },
+  "scene": {
+    "scene_id": "default-scene",
+    "location": "",
+    "environment": "",
+    "activity": "",
+    "time_of_day": "",
+    "props": []
+  },
+  "appearance": {
+    "outfit": {
+      "base": [],
+      "legwear": "",
+      "footwear": "",
+      "outerwear": []
+    },
+    "hair": "",
+    "makeup": "",
+    "accessories": []
+  },
+  "physical": {
+    "cleanliness": "clean",
+    "wetness": "dry",
+    "sweat": "none",
+    "dirt": "none",
+    "fatigue": "none",
+    "injury": []
+  },
+  "emotion": {
+    "baseline": "平静",
+    "current": "平静",
+    "intensity": 0,
+    "reason": "",
+    "persist_across_scenes": false
+  },
+  "presentation": {
+    "pose": "",
+    "action": "",
+    "expression": "",
+    "gaze": "",
+    "held_objects": [],
+    "lighting": "",
+    "camera": ""
+  },
+  "visual": {
+    "outfit": "",
+    "outerwear": "",
+    "top": "",
+    "bottom": "",
+    "dress": "",
+    "legwear": "",
+    "footwear": "",
+    "headwear": "",
+    "accessories": "",
+    "hair": "",
+    "makeup": "",
+    "expression": "",
+    "pose": "",
+    "action": "",
+    "scene": "",
+    "lighting": "",
+    "camera": ""
+  },
+  "internal": {
+    "mood": "平静",
+    "current_activity": "在卧室休息",
+    "relationship_stage": 0,
+    "affection": 10,
+    "trust": 10
+  },
+  "continuity": {
+    "revision": 0,
+    "updated_at": "",
+    "last_image": "",
+    "last_prompt_sha256": "",
+    "last_prompt_id": "",
+    "last_workflow_id": "",
+    "last_target": "",
+    "last_transaction_id": "",
+    "remote_images": {},
+    "delivery_status": "",
+    "mode": "continue",
+    "scene_id": "default-scene",
+    "source_revision": 0,
+    "source_job": "",
+    "inherit_fields": []
+  },
+  "memory": {
+    "long_term_summary": "",
+    "shared_experiences": [],
+    "stable_user_preferences": [],
+    "unfinished_items": [],
+    "recent_events": []
+  },
+  "name": "小舞"
+}

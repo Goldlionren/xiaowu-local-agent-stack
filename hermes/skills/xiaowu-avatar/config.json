@@ -1,0 +1,80 @@
+{
+  "skill": {
+    "name": "xiaowu-avatar",
+    "version": "0.3.10"
+  },
+  "runtime": {
+    "state_dir": "~/.hermes/state/xiaowu-avatar",
+    "job_stale_seconds": 1200,
+    "completed_dedup_seconds": 15,
+    "launcher": "auto"
+  },
+  "execution": {
+    "mode": "mcp",
+    "default_target": "comfy_3060",
+    "allowed_targets": ["comfy_3060", "comfy_4080s", "comfy_5090"],
+    "generation_timeout_seconds": 240,
+    "poll_slice_seconds": 20,
+    "registry_path": "registry/workflows.json"
+  },
+  "workflow": {
+    "path": "workflow/Krea2_YINYUE_cosplay01.json",
+    "prompt_node_id": "63",
+    "prompt_input_name": "value",
+    "seed_bindings": [
+      {"node_id": "85", "input_name": "seed"}
+    ],
+    "save_node_id": "79"
+  },
+  "comfyui": {
+    "base_url": "http://127.0.0.1:8188",
+    "connect_timeout_seconds": 10,
+    "poll_interval_seconds": 2,
+    "generation_timeout_seconds": 240
+  },
+  "telegram": {
+    "enabled": true,
+    "default_channel": "telegram",
+    "hermes_cli": "hermes",
+    "send_timeout_seconds": 75,
+    "send_retries": 2,
+    "retry_delay_seconds": 3,
+    "send_text_separately": true
+  },
+  "memory": {
+    "max_text_chars": 2000,
+    "summary_per_category_limit": 8,
+    "summary_max_chars": 6000
+  },
+  "recent_history": {
+    "max_events": 8,
+    "max_chars": 4000,
+    "scan_max_lines": 500
+  },
+  "state": {
+    "allowed_set_fields": [
+      "visual.outfit",
+      "visual.outerwear",
+      "visual.top",
+      "visual.bottom",
+      "visual.dress",
+      "visual.legwear",
+      "visual.footwear",
+      "visual.headwear",
+      "visual.accessories",
+      "visual.hair",
+      "visual.makeup",
+      "visual.expression",
+      "visual.pose",
+      "visual.action",
+      "visual.scene",
+      "visual.lighting",
+      "visual.camera",
+      "internal.mood",
+      "internal.current_activity",
+      "internal.relationship_stage",
+      "internal.affection",
+      "internal.trust"
+    ]
+  }
+}
