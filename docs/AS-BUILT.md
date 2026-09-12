@@ -1,7 +1,7 @@
 # 银月2号 / 小舞（Xiaowu）As-Built 文档
 
-**文档版本：** v0.2<br>
-**状态日期：** 2026-09-11（Australia/Sydney）<br>
+**文档版本：** v0.3<br>
+**状态日期：** 2026-09-12（Australia/Sydney）<br>
 **部署类型：** 单用户、Local-first、长期记忆 Agent<br>
 **生产身份：** 小舞 / `xiaowu`<br>
 **公开参考仓库：** `Goldlionren/xiaowu-local-agent-stack`<br>
@@ -180,6 +180,49 @@ Hermes CLI 还报告：
 - behind：7149
 
 由于当前是 detached HEAD，不能把普通 branch divergence 作为唯一依据。后续升级前必须先做 carried/local changes reconciliation。
+
+---
+
+## 1.4A Xiaowu TTS / OpenAI-compatible Voice Output
+
+2026-09-12 已完成 Xiaowu TTS 主链路现场验证。Hermes v0.20.6 使用原生 OpenAI-compatible TTS provider 对接独立 Faster-Qwen3-TTS 节点，不修改 Hermes TTS 源码。
+
+当前公开 contract：
+
+```text
+Hermes
+  -> OpenAI-compatible /v1/audio/speech
+  -> Faster-Qwen3-TTS
+  -> Qwen3-TTS 0.6B Base
+  -> PCM16LE 24 kHz mono
+  -> FFmpeg/libopus
+  -> Ogg/Opus
+  -> Telegram native voice
+```
+
+关键状态：
+
+| 项目 | 当前状态 |
+|---|---|
+| Faster-Qwen3-TTS upstream baseline | v0.4.0 / `e2a215f61984c0e72a242f8dd72333338e7672f4` |
+| Model | `Qwen/Qwen3-TTS-12Hz-0.6B-Base` |
+| OpenAI-compatible API | PASS |
+| `response_format=opus` local compatibility patch | PASS |
+| WAV / PCM / MP3 regression | PASS |
+| Telegram Ogg/Opus | PASS |
+| Hermes TTS provider | `openai` |
+| Hermes voice id | `xiaowu` |
+| Global auto-TTS | disabled |
+| `/voice off` / `/voice on` / `/voice tts` | PASS |
+
+Public examples use `<TTS_HOST>` and do not publish production voice sample、private voice profile、LAN address、local Windows path 或 private instruct 内容。
+
+完整专项 As-Built 与运维过程见：
+
+```text
+docs/AS-BUILT-TTS.md
+docs/TTS-HERMES-OPENAI-OPUS-SOP.md
+```
 
 ---
 
@@ -795,6 +838,12 @@ stale bytecode
 | Main LLM | PASS |
 | Hermes CLI | PASS |
 | Hermes Gateway | PASS |
+| Faster-Qwen3-TTS API | PASS |
+| Qwen3-TTS voice clone | PASS |
+| TTS Ogg/Opus | PASS |
+| Hermes OpenAI TTS provider | PASS |
+| Hermes `/voice off/on/tts` | PASS |
+| Telegram Xiaowu TTS delivery | PASS |
 | Docker | PASS |
 | PostgreSQL | PASS |
 | Hindsight | PASS |
@@ -1003,6 +1052,9 @@ v0.1.0
 | Kernel | 7.0.0-31-generic |
 | Hermes | v0.20.6 |
 | Hermes HEAD | `26350357d76e4508c8df9304a3374bdc5a6f6220` |
+| Faster-Qwen3-TTS | v0.4.0 + local OpenAI/Opus compatibility patch |
+| TTS model | `Qwen/Qwen3-TTS-12Hz-0.6B-Base` |
+| TTS voice mode default | `auto_tts=false` |
 | llama.cpp | 0.4.0-dev build 1 |
 | llama.cpp HEAD | `4d9176092d00586775af140581bb0b558ddc4389` |
 | Main model alias | `yinyue2` |
@@ -1030,6 +1082,7 @@ v0.1.0
 - Intel Arc Pro B60 承载 262k context 主 Agent LLM；
 - Intel Arc A770M 承载 Memory LLM 与 Embedding；
 - Hermes v0.20.6 提供 Agent/Gateway/Skills/Plugins/MCP 能力；
+- OpenAI-compatible Faster-Qwen3-TTS 已通过 Hermes 原生 TTS provider 接入，并验证 Telegram Ogg/Opus voice delivery；
 - Hindsight 0.8.6 + PostgreSQL 18.3 + VectorChord/pgvector 构成长记忆底座；
 - Xiaowu Memory Service 0.5.1-phase8f-fast2 负责生产 memory policy、retrieval 与 control plane；
 - `xiaowu-avatar` / `xiaowu-visual` / `xiaowu-model-router` 已成为当前 active Xiaowu namespace；

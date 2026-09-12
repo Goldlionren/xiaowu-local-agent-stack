@@ -583,7 +583,7 @@ Repository:
 Goldlionren/xiaowu-local-agent-stack
 
 As-Built:
-v0.2
+v0.3
 
 GitHub Release:
 v0.1.1
@@ -593,3 +593,23 @@ Release commit:
 ```
 
 This baseline becomes the reference point for future Xiaowu / 银月2号 production changes.
+
+---
+
+# 18. Component-specific SOPs
+
+TTS / voice-output changes must also follow:
+
+```text
+docs/TTS-HERMES-OPENAI-OPUS-SOP.md
+```
+
+The TTS SOP adds component-specific requirements for:
+
+- Faster-Qwen3-TTS file-level backup and SHA-256 validation;
+- OpenAI-compatible `response_format=opus`;
+- FFmpeg / `libopus` validation;
+- WAV / PCM / MP3 regression checks;
+- Hermes config backup and rollback;
+- `/voice off`, `/voice on`, `/voice tts`, and `/voice status`;
+- private voice sample/profile exclusion from public Git history.

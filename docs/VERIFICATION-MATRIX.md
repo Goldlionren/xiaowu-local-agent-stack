@@ -2,7 +2,7 @@
 
 Status vocabulary is limited to PASS, FAIL, PARTIAL, NOT TESTED, and DISABLED BY DESIGN.
 
-| Component | Status | Evidence from 2026-09-11 |
+| Component | Status | Evidence through 2026-09-12 |
 |---|---|---|
 | Ubuntu OS | PASS | os-release and hostnamectl: Ubuntu 24.04.4 LTS |
 | Intel GPU | PASS | sycl-ls and xpu-smi found B60, A770M, and Iris Xe; device state normal |
@@ -10,6 +10,18 @@ Status vocabulary is limited to PASS, FAIL, PARTIAL, NOT TESTED, and DISABLED BY
 | Main LLM | PASS | listener; /v1/models yinyue2; chat HTTP 200 at about 74 tok/s |
 | Hermes CLI | PASS | hermes --version returned v0.20.6 |
 | Hermes Gateway | PASS | user unit enabled and active with live PID |
+| Faster-Qwen3-TTS API | PASS | OpenAI-compatible speech API generated audio successfully |
+| Qwen3-TTS voice clone | PASS | private xiaowu voice profile generated validated speech |
+| TTS Opus output | PASS | ffprobe: opus, ogg, mono, 48 kHz decoder clock |
+| TTS WAV regression | PASS | pcm_s16le, 24 kHz, mono, wav |
+| TTS MP3 regression | PASS | mp3, 24 kHz, mono |
+| TTS PCM regression | PASS | raw pcm_s16le parsed at 24 kHz mono |
+| Hermes OpenAI TTS provider | PASS | tts.openai base_url/model/voice path audited and runtime-tested |
+| Hermes Telegram TTS format | PASS | Telegram .ogg path maps to response_format=opus |
+| Hermes /voice off | PASS | text-only mode verified |
+| Hermes /voice on | PASS | voice_only command path present and validated |
+| Hermes /voice tts | PASS | all-replies TTS mode successfully delivered Xiaowu voice |
+| Telegram TTS delivery | PASS | Xiaowu Ogg/Opus voice message delivered successfully |
 | Docker | PASS | Engine 29.4.1 and Compose 5.1.3; containers running |
 | PostgreSQL | PASS | healthy container; SQL reports PostgreSQL 18.3 |
 | Hindsight | PASS | 0.8.6 /health returned healthy and database connected |

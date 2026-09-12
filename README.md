@@ -23,9 +23,9 @@ flowchart TD
     T --> D[Image retrieval and delivery]
 ~~~
 
-The audited stack uses Ubuntu, Hermes Agent, llama.cpp, Intel Arc GPUs, Hindsight, PostgreSQL with vector retrieval, a policy and ledger based memory service, Hermes skills/plugins, MCP, and a remote ComfyUI image worker.
+The audited stack uses Ubuntu, Hermes Agent, llama.cpp, Intel Arc GPUs, Hindsight, PostgreSQL with vector retrieval, a policy and ledger based memory service, Hermes skills/plugins, MCP, a remote ComfyUI image worker, and an OpenAI-compatible Faster-Qwen3-TTS voice path with Telegram Ogg/Opus delivery.
 
-Start with [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), [docs/AS-BUILT.md](docs/AS-BUILT.md), and [docs/VERIFICATION-MATRIX.md](docs/VERIFICATION-MATRIX.md). Deployment examples are intentionally parameterized. They are reference material, not unattended production installers.
+Start with [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), [docs/AS-BUILT.md](docs/AS-BUILT.md), [docs/AS-BUILT-TTS.md](docs/AS-BUILT-TTS.md), [docs/TTS-HERMES-OPENAI-OPUS-SOP.md](docs/TTS-HERMES-OPENAI-OPUS-SOP.md), and [docs/VERIFICATION-MATRIX.md](docs/VERIFICATION-MATRIX.md). Deployment examples are intentionally parameterized. They are reference material, not unattended production installers.
 
 No model weights, memory records, chat transcripts, state databases, generated images, transactions, credentials, personal identifiers, SSH material, or private network addresses are included.
 
